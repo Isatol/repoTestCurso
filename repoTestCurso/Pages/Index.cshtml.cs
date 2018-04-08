@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using repoTestCurso.Data;
 using repoTestCurso.Data.Entities;
 
@@ -13,7 +14,11 @@ namespace repoTestCurso.Pages
     {
         private TodoContext _context { get; set; }
 
+        
         public List<Todo> Todos { get; set; }
+
+        [BindProperty]
+        public Todo Todo { get; set; }
 
         public IndexModel(TodoContext context) {
             _context = context;
@@ -34,5 +39,6 @@ namespace repoTestCurso.Pages
 
             return RedirectToPage("/Index");
         }
+
     }
 }

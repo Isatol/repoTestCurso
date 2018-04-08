@@ -13,12 +13,12 @@ namespace repoTestCurso.Pages.TodosPage
     {
         private TodoContext _context { get; set; }
 
-        [BindProperty]
-        public Todo Todo { get; set; }
-
         public NuevoTodoModel(TodoContext context) {
             _context = context;
         }
+
+        [BindProperty]
+        public Todo Todo { get; set; }
 
         public void OnGet()
         {

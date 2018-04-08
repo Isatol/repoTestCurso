@@ -26,25 +26,32 @@
 
 @foreach (var todo in Model.Todos)
 {
-<form method="post">
-    <div class="col-md-6">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <p>@todo.Id</p><p>@todo.Name</p>
-                
-                               <a asp-page="TodosPage/EditarTodo" class="btn btn-info" asp-route-id="@todo.Id">Editar</a>
-                    <button type="submit" asp-page-handler="delete" asp-route-id="@todo.Id" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-trash"></span>&nbsp;
-                    </button>
-            </div>
-            <div class="panel-body">
-                <p>@todo.Description</p>
+    <form method="post">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title pull-left">
+                        @todo.Id: @todo.Name
+                    </h3>
+                    <div class="btn-group pull-right">
+                        <a asp-page="TodosPage/EditarTodo" class="btn btn-xs btn-info" asp-route-id="@todo.Id"><span class="glyphicon glyphicon-edit"></span>&nbsp;</a>
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@todo.Id" class="btn btn-xs btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp;
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    
+                        <p>@todo.Description</p>
+                    <hr />
+                        <p class="text-muted">Programado para el día: </p> <p>@todo.CreatedAt</p>
+
+                </div>
             </div>
         </div>
-    </div>
-</form>
-        
-   
+    </form>
+
 
 
 }
