@@ -1,0 +1,31 @@
+﻿@page "{id:int}"
+@model repoTestCurso.Pages.TodosPage.EditarTodoModel
+@{
+    ViewData["Title"] = "EditarTodo";
+}
+
+<h2>Editar Todo - @Model.Todo.Id</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <form method="post">
+                    <input asp-for="Todo.Id" type="hidden" />
+                    <div class="form-group">
+                        <label for="name">Nombre de tarea</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-plus-sign"></i></span>
+                            <input id="name" asp-for="Todo.Name" type="text" class="form-control" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Descripcion:</label>
+                        <textarea type="text" asp-for="Todo.Description" rows="8" cols="70" class="form-control" id="desc"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

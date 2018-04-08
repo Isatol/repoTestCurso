@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using repoTestCurso.Data;
+using repoTestCurso.Data.Entities;
 
 namespace repoTestCurso
 {
@@ -21,6 +24,12 @@ namespace repoTestCurso
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDbContext<TodoContext>(options => options.UseSqlServer(@"Server=DESKTOP-9SEASHN\SQLEXPRESS;Database=Todo;Trusted_Connection=True"));
+            var dbConfig = new DatabaseConfig();
+            Configuration.GetSection("Database").Bind(dbConfig);
+            services.AddDbContext<TodoContext>(options => options.UseSqlServer(dbConfig.ConnectonString));
+
+
             services.AddMvc();
         }
 
