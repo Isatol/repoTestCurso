@@ -14,6 +14,7 @@ namespace repoTestCurso.Data.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime? CreatedAt { get; set; }
+        public DateTime? ToDoDay { get; set; }
         public bool IsComplete { get; set; }
     }
 }

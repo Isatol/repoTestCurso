@@ -14,7 +14,9 @@ namespace repoTestCurso.Data
 
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Todo>().Property(t => t.CreatedAt).HasDefaultValueSql("getdate()");
+        }
 
         public TodoContext() {
 
